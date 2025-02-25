@@ -16,7 +16,7 @@ app.use(helmet())
 app.use(compression())
 app.use(express.urlencoded({ extended: false }))
 app.use(express.json())
-app.use("/api", routerNavigation)
+app.use("/", routerNavigation)
 
 app.use("*", (req, res) => {
 	res.status(404).send("Path Not Found")
