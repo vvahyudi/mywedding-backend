@@ -59,4 +59,33 @@ module.exports = {
 					}
 				})
 		}),
+	updateGuest: (slug, data) =>
+		new Promise((resolve, reject) => {
+			supabase
+				.from("tb_guests")
+				.update(data)
+				.eq("slug", slug)
+				.select()
+				.then((result) => {
+					if (!result.error) {
+						resolve(result)
+					} else {
+						reject(result)
+					}
+				})
+		}),
+	deleteGuest: (slug) =>
+		new Promise((resolve, reject) => {
+			supabase
+				.from("tb_guests")
+				.delete()
+				.eq("slug", slug)
+				.then((result) => {
+					if (!result.error) {
+						resolve(result)
+					} else {
+						reject(result)
+					}
+				})
+		}),
 }
